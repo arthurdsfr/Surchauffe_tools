@@ -31,7 +31,7 @@ plt.xlabel("Jour")
 plt.ylabel("Prix en USD")
 plt.legend()
 plt.grid(True)
-#plt.savefig('graph_eth_price')
+plt.savefig('graph_eth_price')
 
 
 
