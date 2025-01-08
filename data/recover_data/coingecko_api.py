@@ -1,31 +1,27 @@
 import requests
-
-def fetch_altcoins_data(altcoins, num_days):
-    url = "https://api.coingecko.com/api/v3/coins/markets"
-    all_data = []
+import matplotlib.pyplot as plt
+def fetch_eth_data(num_days):
+    url = "https://api.coingecko.com/api/v3/coins/ethereum/market_chart"
     params = {
         "vs_currency": "usd",
-        "ids": ",".join(altcoins),
-        "order": "market_cap_desc",
         "days": num_days,
-        "interval": "daily",
-        "price_change_percentage": "7d,30d"
-        }
+        "interval": "daily"
+    }
+
     response = requests.get(url, params=params)
-    data = response.json()
-    all_data.extend(data) #extend because adding each value separately
 
-    return all_data
+    if response.status_code == 200:
+        data = response.json()
+        # Extraire les dates et prix
+        prices = data['prices']
+        prices_value = [entry[1] for entry in prices]  # Prix en USD
+        return prices_value
+    else:
+        print(f"Erreur lors de la récupération des données: {response.status_code}")
+        return [], []
 
-altcoins = ['bitcoin', 'ethereum']
-data = fetch_altcoins_data(altcoins,500)
+# Appel de la fonction
+eth_prices = fetch_eth_data(365)
 
-# Afficher les données récupérées pour chaque altcoin
 
-for coin in data:
-    if isinstance(coin, dict):  # Vérifie que coin est un dictionnaire
-        print(f"{coin['name']} ({coin['symbol'].upper()}):")
-        print(f"  Price: {coin['current_price']} USD")
-        print(f"  Volume 24h: {coin['total_volume']} USD")
-        print(f"  Price change 24h: {coin['price_change_percentage_24h']}%")
-        print()
+
