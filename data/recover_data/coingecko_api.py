@@ -13,15 +13,16 @@ def fetch_eth_prices(num_days):
 
     if response.status_code == 200:
         data = response.json()
-        prices = data['prices']  # Liste des [timestamp, prix]
-        prices_value = [entry[1] for entry in prices]  # On récupère uniquement les prix en USD
-        return prices_value
+        prices_value = [entry[1] for entry in data['prices']]  # On récupère uniquement les prix en USD
+        market_cap_value = [entry[1] for entry in data['market_caps']]
+        return prices_value, market_cap_value
     else:
         print(f"Erreur lors de la récupération des données: {response.status_code}")
         return []
 
 # Récupérer les prix de l'Ethereum sur les 365 derniers jours
-eth_prices = fetch_eth_prices(365)
+eth_prices, market_cap = fetch_eth_prices(365)
+
 
 # Tracer le graphique
 plt.figure(figsize=(10, 5))
