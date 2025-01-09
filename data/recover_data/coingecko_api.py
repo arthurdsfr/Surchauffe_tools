@@ -23,12 +23,12 @@ def fetch_eth_datas(num_days):
         return []
 
 # Récupérer les prix de l'Ethereum sur les 365 derniers jours
-eth_prices, market_cap, volume_trading_24h = fetch_eth_datas(365)
+#eth_prices, market_cap, volume_trading_24h = fetch_eth_datas(365)
 
 
-print(len(eth_prices))
-print(len(market_cap))
-print(len(volume_trading_24h))
+#print(len(eth_prices))
+#print(len(market_cap))
+#print(len(volume_trading_24h))
 
 # Tracer le graphique
 plt.figure(figsize=(10, 5))
