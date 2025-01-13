@@ -30,8 +30,6 @@ variations = np.random.normal(0, 2, jours)
 # Calculer les prix en cumulant les variations
 prix = prix_initial + np.cumsum(variations)
 
-# Convertir en série Pandas
-serie_prix = pd.Series(prix)
 
 plt.figure(figsize=(14, 7))
 plt.plot(prix, label='Prix simulés', color='blue', alpha=0.6)
@@ -44,4 +42,4 @@ plt.xlabel('Jours')
 plt.ylabel('Prix')
 plt.legend()
 plt.grid(True)
-plt.savefig('test_ema_sma')
+#plt.savefig('test_ema_sma')
