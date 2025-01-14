@@ -1,5 +1,6 @@
 import pandas as pd
-
+import data.recover_data.coingecko_api as cg
+import matplotlib.pyplot as plt
 def rsi(coin_prices_365j):
     period = 14
     df_coin_prices_365j = pd.DataFrame(coin_prices_365j, columns=['Close'])
@@ -16,4 +17,13 @@ def rsi(coin_prices_365j):
 
     return rsi
 
-
+#eth_prices, market_cap, volume_trading_24h = cg.fetch_eth_datas(365)
+#rsi = rsi(eth_prices)
+#plt.figure(figsize=(10, 5))
+#plt.plot(rsi, label="rsi", color="blue")
+#plt.title("Évolution du prix de l'Ethereum sur les 365 derniers jours")
+#plt.xlabel("Jour")
+#plt.ylabel("Prix en USD")
+#plt.legend()
+#plt.grid(True)
+#plt.savefig('graph_eth_rsi')

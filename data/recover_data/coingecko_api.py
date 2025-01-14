@@ -31,13 +31,13 @@ def fetch_eth_datas(num_days):
 #print(len(volume_trading_24h))
 
 # Tracer le graphique
-plt.figure(figsize=(10, 5))
-plt.plot(eth_prices, label="Prix de l'Ethereum (USD)", color="blue")
-plt.title("Évolution du prix de l'Ethereum sur les 365 derniers jours")
-plt.xlabel("Jour")
-plt.ylabel("Prix en USD")
-plt.legend()
-plt.grid(True)
+#plt.figure(figsize=(10, 5))
+#plt.plot(eth_prices, label="Prix de l'Ethereum (USD)", color="blue")
+#plt.title("Évolution du prix de l'Ethereum sur les 365 derniers jours")
+#plt.xlabel("Jour")
+#plt.ylabel("Prix en USD")
+#plt.legend()
+#plt.grid(True)
 #plt.savefig('graph_eth_price')
 
 
