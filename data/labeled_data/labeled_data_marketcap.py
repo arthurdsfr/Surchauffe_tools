@@ -1,4 +1,4 @@
-import data.calculated_data.marketcap_average as avg
+import data.calculated_data.marketcap_avg as avg
 import numpy as np
 
 def labeled_marketcap(coin_marketcap_365j):

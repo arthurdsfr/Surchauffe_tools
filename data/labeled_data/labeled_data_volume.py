@@ -1,4 +1,4 @@
-import data.calculated_data.volume_trading_average as ta
+import data.calculated_data.volume_trading_avg as ta
 import numpy as np
 
 def labeled_volume(coin_volume_365j):
