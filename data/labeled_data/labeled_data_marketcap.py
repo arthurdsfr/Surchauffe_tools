@@ -5,11 +5,11 @@ def labeled_marketcap(coin_marketcap_365j):
     criteria_1 = 0.7 #critere + ou - 30%
     criteria_2 = 1.3
     labels = []
-    average_marketcap = avg.average_marketcap(coin_marketcap_365j)
-    for marketcap in coin_marketcap_365j:
-        if marketcap >= average_marketcap*criteria_2:
+    marketcap_average = avg.average_marketcap(coin_marketcap_365j)
+    for marketcap_1d in coin_marketcap_365j:
+        if marketcap_1d >= marketcap_average*criteria_2:
             labels.append(1)
-        elif average_marketcap*criteria_1 < marketcap < average_marketcap*criteria_2:
+        elif marketcap_1d*criteria_1 < marketcap_1d < marketcap_average*criteria_2:
             labels.append(0)
         else :
             labels.append(-1)
