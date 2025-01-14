@@ -35,13 +35,4 @@ def price_variation_30d(coin_prices_365j):
     return price_variation_30d
 
 
-np.random.seed(42)  # Pour la reproductibilité
-jours = 365
-prix_initial = 100
-# Générer des variations journalières avec une moyenne de 0 et une écart-type de 2
-variations = np.random.normal(0, 2, jours)
-# Calculer les prix en cumulant les variations
-prix = prix_initial + np.cumsum(variations)
 
-
-#print(price_variation_1d(prix))

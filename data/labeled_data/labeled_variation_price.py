@@ -7,7 +7,7 @@ def labeled_variation_price_1d(coin_prices_365j):
     for variation_price in vp_1d:
         if variation_price >= criteria_1d:
             labels.append(1)
-        elif -criteria_1d < variation_price > criteria_1d:
+        elif -criteria_1d < variation_price < criteria_1d:
             labels.append(0)
         else :
             labels.append(-1)
@@ -19,7 +19,7 @@ def labeled_variation_price_7d(coin_prices_365j):
     for variation_price in vp_7d:
         if variation_price >= criteria_1d:
             labels.append(1)
-        elif -criteria_1d < variation_price > criteria_1d:
+        elif -criteria_1d < variation_price < criteria_1d:
             labels.append(0)
         else :
             labels.append(-1)
@@ -31,8 +31,9 @@ def labeled_variation_price_30d(coin_prices_365j):
     for variation_price in vp_1d:
         if variation_price >= criteria_30d:
             labels.append(1)
-        elif -criteria_30d < variation_price > criteria_30d:
+        elif -criteria_30d < variation_price < criteria_30d:
             labels.append(0)
         else :
             labels.append(-1)
     return labels
+
