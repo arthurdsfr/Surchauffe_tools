@@ -1,4 +1,4 @@
-import data.calculated_data.mobile_average as ma
+import data.calculated_data.moving_average as ma
 import numpy as np
 import matplotlib.pyplot as plt
 

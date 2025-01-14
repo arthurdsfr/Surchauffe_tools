@@ -1,3 +1,4 @@
+import numpy as np
 
 def price_variation_1d(coin_prices_365j):
     price_variation_1d = [0]
@@ -5,7 +6,6 @@ def price_variation_1d(coin_prices_365j):
         ecart = coin_prices_365j[day] - coin_prices_365j[day-1]
         ecart_percentage = (ecart/coin_prices_365j[day-1])*100
         price_variation_1d.append(ecart_percentage)
-
     return price_variation_1d
 
 def price_variation_7d(coin_prices_365j):
@@ -33,3 +33,5 @@ def price_variation_30d(coin_prices_365j):
         price_variation_30d.append(ecart_percentage)
 
     return price_variation_30d
+
+
