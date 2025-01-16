@@ -6,8 +6,7 @@ def fetch_eth_datas(num_days):
     params = {
         "vs_currency": "usd",
         "days": num_days,
-        "interval": "daily",
-        "price_change_percentage": "7d,30d"
+        "interval": "daily"
     }
 
     response = requests.get(url, params=params)
@@ -23,12 +22,12 @@ def fetch_eth_datas(num_days):
         return []
 
 # Récupérer les prix de l'Ethereum sur les 365 derniers jours
-#eth_prices, market_cap, volume_trading_24h = fetch_eth_datas(365)
+#eth_prices_365j, market_cap_365j, volume_trading_24h_365j = fetch_eth_datas(365)
 
 
-#print(len(eth_prices))
-#print(len(market_cap))
-#print(len(volume_trading_24h))
+#print(len(eth_prices_365j))
+#print(len(market_cap_365j))
+#print(len(volume_trading_24h_365j))
 
 # Tracer le graphique
 #plt.figure(figsize=(10, 5))
