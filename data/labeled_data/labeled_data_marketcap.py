@@ -22,6 +22,7 @@ def compter_occurrences(liste):
     count_neg1 = liste.count(-1)
     return count_1, count_0, count_neg1
 
+'''
 np.random.seed(42)  # Pour la reproductibilité
 jours = 365
 prix_initial = 100
@@ -38,6 +39,6 @@ print(len(labeled))
 print(f"Nombre de 1 : {count_1}")
 print(f"Nombre de 0 : {count_0}")
 print(f"Nombre de -1 : {count_neg1}")
-
+'''
 
 

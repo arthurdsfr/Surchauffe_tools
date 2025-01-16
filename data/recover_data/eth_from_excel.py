@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine
 import pandas as pd
-import matplotlib.pyplot as plt
 
 def fetch_eth_data_from_excel():
 
