@@ -1,5 +1,4 @@
 import data.calculated_data.rsi as rs
-import numpy as np
 
 def labeled_rsi(coin_prices_365j):
     criteria_1 = 30
@@ -14,3 +13,4 @@ def labeled_rsi(coin_prices_365j):
         else:
             labels.append(-1)
     return labels
+
