@@ -4,6 +4,7 @@ import labeled_data_rsi
 import labeled_variation_price
 import labeled_data_ma
 import data.recover_data.eth_from_excel as excel
+import matplotlib.pyplot as plt
 
 def labelled_average(coin_price_365j, marketcap_365j, volume_24h_365j):
     number_variables = 10
@@ -31,4 +32,22 @@ def labelled_average(coin_price_365j, marketcap_365j, volume_24h_365j):
     return final_labels
 
 
+def compter_occurrences(liste):
+    count_1 = liste.count(1)
+    count_0 = liste.count(0)
+    count_neg1 = liste.count(-1)
+    return count_1, count_0, count_neg1
+
 eth_prices_365j, marketcap_365j, volume_24h_365j = excel.fetch_eth_data_from_excel()
+labels = labelled_average(eth_prices_365j, marketcap_365j, volume_24h_365j)
+count_1, count_0, count_neg1 = compter_occurrences(labels)
+
+print(len(labels))
+print(labels)
+print(f"Nombre de 1 : {count_1}")
+print(f"Nombre de 0 : {count_0}")
+print(f"Nombre de -1 : {count_neg1}")
+plt.figure(figsize=(14, 7))
+plt.plot(eth_prices_365j, label='Prix simulés', color='blue', alpha=0.6)
+plt.grid(True)
+plt.savefig('prix_eth')
