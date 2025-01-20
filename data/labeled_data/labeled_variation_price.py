@@ -1,7 +1,7 @@
 import data.calculated_data.variation_price as vp
 import numpy as np
 def labeled_variation_price_1d(coin_prices_365j):
-    criteria_1d = 20
+    criteria_1d = 5
     labels = []
     vp_1d = vp.price_variation_1d(coin_prices_365j)
     for variation_price in vp_1d:
@@ -13,7 +13,7 @@ def labeled_variation_price_1d(coin_prices_365j):
             labels.append(-1)
     return labels
 def labeled_variation_price_7d(coin_prices_365j):
-    criteria_1d = 40
+    criteria_1d = 10
     labels = []
     vp_7d = vp.price_variation_7d(coin_prices_365j)
     for variation_price in vp_7d:
@@ -25,7 +25,7 @@ def labeled_variation_price_7d(coin_prices_365j):
             labels.append(-1)
     return labels
 def labeled_variation_price_30d(coin_prices_365j):
-    criteria_30d = 20
+    criteria_30d = 5
     labels = []
     vp_1d = vp.price_variation_1d(coin_prices_365j)
     for variation_price in vp_1d:
