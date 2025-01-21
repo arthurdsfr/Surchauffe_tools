@@ -4,15 +4,15 @@ import pymysql
 
 def fetch_eth_data_from_excel():
 
-    engine = create_engine('mysql+pymysql://root:azerty@localhost/eth_data')
+    engine = create_engine('mysql+pymysql://root:azerty@localhost/crypto_data')
 
     try:
         # Charger les données
         query = '''
         SELECT 
             `Prix (USD)`,
-            `MarketCap (10E+7 USD)`,
-            `Volume (10E+7 USD)`
+            `MarketCap (USD)`,
+            `Volume (USD)`
         FROM eth_data
         '''
 
@@ -21,8 +21,8 @@ def fetch_eth_data_from_excel():
 
         # Extraire chaque colonne en liste
         eth_prices_365j = Table['Prix (USD)'].tolist()
-        marketcap_365j = Table['MarketCap (10E+7 USD)'].tolist()
-        volume_24h_365j = Table['Volume (10E+7 USD)'].tolist()
+        marketcap_365j = Table['MarketCap (USD)'].tolist()
+        volume_24h_365j = Table['Volume (USD)'].tolist()
 
         # Retourner les listes
         return eth_prices_365j, marketcap_365j, volume_24h_365j

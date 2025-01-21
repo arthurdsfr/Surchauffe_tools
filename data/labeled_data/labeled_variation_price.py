@@ -12,6 +12,7 @@ def labeled_variation_price_1d(coin_prices_365j):
         else :
             labels.append(-1)
     return labels
+
 def labeled_variation_price_7d(coin_prices_365j):
     criteria_1d = 10
     labels = []
@@ -24,6 +25,7 @@ def labeled_variation_price_7d(coin_prices_365j):
         else :
             labels.append(-1)
     return labels
+
 def labeled_variation_price_30d(coin_prices_365j):
     criteria_30d = 5
     labels = []
