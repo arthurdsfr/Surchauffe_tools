@@ -2,7 +2,7 @@ import requests
 import matplotlib.pyplot as plt
 
 def fetch_eth_datas(num_days):
-    url = "https://api.coingecko.com/api/v3/coins/ethereum/market_chart"
+    url = "https://api.coingecko.com/api/v3/coins/solana/market_chart"
     params = {
         "vs_currency": "usd",
         "days": num_days,
@@ -14,20 +14,20 @@ def fetch_eth_datas(num_days):
     if response.status_code == 200:
         data = response.json()
         prices_value = [entry[1] for entry in data['prices']]  # On récupère uniquement les prix en USD
-        market_cap_value = [entry[1] for entry in data['market_caps']]
-        volume_trading_24h_value = [entry[1] for entry in data['total_volumes']]
+        market_cap_value = [entry[1] / 10000000 for entry in data['market_caps']]
+        volume_trading_24h_value = [entry[1] / 10000000 for entry in data['total_volumes']]
         return prices_value, market_cap_value, volume_trading_24h_value
     else:
         print(f"Erreur lors de la récupération des données: {response.status_code}")
         return []
 
 # Récupérer les prix de l'Ethereum sur les 365 derniers jours
-#eth_prices_365j, market_cap_365j, volume_trading_24h_365j = fetch_eth_datas(365)
-
-
-#print(len(eth_prices_365j))
-#print(len(market_cap_365j))
-#print(len(volume_trading_24h_365j))
+# eth_prices_365j, market_cap_365j, volume_trading_24h_365j = fetch_eth_datas(3)
+#
+#
+# print(eth_prices_365j)
+# print(market_cap_365j)
+# print(volume_trading_24h_365j)
 
 # Tracer le graphique
 #plt.figure(figsize=(10, 5))
