@@ -1,23 +1,23 @@
-import labeled_data_marketcap
-import labeled_data_volume
-import labeled_data_rsi
-import labeled_variation_price
-import labeled_data_ma
-import data.recover_data.eth_from_excel as excel
+import data.labeled_data.labeled_data_marketcap as mc
+import data.labeled_data.labeled_data_volume as vol
+import data.labeled_data.labeled_data_rsi as rs
+import data.labeled_data.labeled_variation_price as vp
+import data.labeled_data.labeled_data_ma as ma
+import data.recover_data.coin_from_excel as excel
 import matplotlib.pyplot as plt
 
 def labelled_average(coin_price_365j, marketcap_365j, volume_24h_365j):
     number_variables = 10
-    mc_labelled = labeled_data_marketcap.labeled_marketcap(marketcap_365j)
-    vt_labelled = labeled_data_volume.labeled_volume(volume_24h_365j)
-    rsi_labelled = labeled_data_rsi.labeled_rsi(coin_price_365j)
-    vp1d_labelled = labeled_variation_price.labeled_variation_price_1d(coin_price_365j)
-    vp7d_labelled = labeled_variation_price.labeled_variation_price_7d(coin_price_365j)
-    vp30d_labelled = labeled_variation_price.labeled_variation_price_30d(coin_price_365j)
-    sma50_labelled = labeled_data_ma.labeled_price_coin_sma50(coin_price_365j)
-    sma200_labelled = labeled_data_ma.labeled_price_coin_sma200(coin_price_365j)
-    ema50_labelled = labeled_data_ma.labeled_price_coin_ema50(coin_price_365j)
-    ema200_labelled = labeled_data_ma.labeled_price_coin_ema200(coin_price_365j)
+    mc_labelled = mc.labeled_marketcap(marketcap_365j)
+    vt_labelled = vol.labeled_volume(volume_24h_365j)
+    rsi_labelled = rs.labeled_rsi(coin_price_365j)
+    vp1d_labelled = vp.labeled_variation_price_1d(coin_price_365j)
+    vp7d_labelled = vp.labeled_variation_price_7d(coin_price_365j)
+    vp30d_labelled = vp.labeled_variation_price_30d(coin_price_365j)
+    sma50_labelled = ma.labeled_price_coin_sma50(coin_price_365j)
+    sma200_labelled = ma.labeled_price_coin_sma200(coin_price_365j)
+    ema50_labelled = ma.labeled_price_coin_ema50(coin_price_365j)
+    ema200_labelled = ma.labeled_price_coin_ema200(coin_price_365j)
 
     final_labels = []
     for i in range(len(coin_price_365j)):
