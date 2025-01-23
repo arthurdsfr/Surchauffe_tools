@@ -7,6 +7,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import tree
+from joblib import dump
 
 def train_model(coin_prices_365j, marketcap_365j, volume_24h_365j):
     rsi = rs.rsi(coin_prices_365j)
@@ -40,6 +41,8 @@ def train_model(coin_prices_365j, marketcap_365j, volume_24h_365j):
     X_train, x_test, Y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     decision_tree = DecisionTreeClassifier()
     decision_tree.fit(X_train, Y_train)
+    dump(decision_tree, 'eth_decision_tree_model.joblib')
+    print("Modèle sauvegardé sous le nom : 'eth_decision_tree_model.joblib'")
     test_tree = decision_tree.score(x_test, y_test)
     return test_tree
 
