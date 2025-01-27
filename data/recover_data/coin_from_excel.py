@@ -13,7 +13,7 @@ def fetch_eth_data_from_excel():
             `Prix (USD)`,
             `MarketCap (USD)`,
             `Volume (USD)`
-        FROM eth_data
+        FROM solana_data
         '''
 
         # Lire les données dans un DataFrame
@@ -34,3 +34,33 @@ def fetch_eth_data_from_excel():
     finally:
         engine.dispose()
 
+
+def fetch_30d_from_excel():
+
+    engine = create_engine('mysql+pymysql://root:azerty@localhost/crypto_data')
+
+    try:
+        # Charger les données
+        query = '''
+        SELECT 
+            `Prix (USD)`,
+            `MarketCap (USD)`,
+            `Volume (USD)`,
+            ORDER BY `Date` DESC LIMIT 30
+        FROM solana_data
+        '''
+        # Lire les données dans un DataFrame
+        df = pd.read_sql(query, engine)
+
+        # Inverser l'ordre des lignes pour avoir les données du plus ancien au plus récent
+        df = df.iloc[::-1]
+
+        # Retourner le DataFrame
+        return df
+
+    except Exception as e:
+        print("Une erreur s'est produite :", e)
+        return pd.DataFrame()
+
+    finally:
+        engine.dispose()
