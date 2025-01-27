@@ -22,8 +22,7 @@ def fetch_eth_datas(num_days):
         return []
 
 # Récupérer les prix de l'Ethereum sur les 365 derniers jours
-# eth_prices_365j, market_cap_365j, volume_trading_24h_365j = fetch_eth_datas(3)
-#
+# eth_prices_365j, market_cap_365j, volume_trading_24h_365j = fetch_eth_datas(4)
 #
 # print(eth_prices_365j)
 # print(market_cap_365j)
