@@ -35,7 +35,7 @@ def fetch_eth_data_from_excel():
         engine.dispose()
 
 
-def fetch_30d_from_excel():
+def fetch_60d_from_excel():
 
     engine = create_engine('mysql+pymysql://root:azerty@localhost/crypto_data')
 
@@ -46,7 +46,7 @@ def fetch_30d_from_excel():
             `Prix (USD)`,
             `MarketCap (USD)`,
             `Volume (USD)`,
-            ORDER BY `Date` DESC LIMIT 30
+            ORDER BY `Date` DESC LIMIT 60
         FROM solana_data
         '''
         # Lire les données dans un DataFrame
