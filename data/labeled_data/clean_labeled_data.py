@@ -3,8 +3,9 @@ import data.labeled_data.labeled_data_volume as vol
 import data.labeled_data.labeled_data_rsi as rs
 import data.labeled_data.labeled_variation_price as vp
 import data.labeled_data.labeled_data_ma as ma
-import data.recover_data.coin_from_excel as excel
-import matplotlib.pyplot as plt
+from data.recover_data.coin_from_dbeaver import *
+from data.recover_data.coin_from_excel import *
+
 
 def labelled_average(coin_price_365j, marketcap_365j, volume_24h_365j):
     number_variables = 10
@@ -30,3 +31,16 @@ def labelled_average(coin_price_365j, marketcap_365j, volume_24h_365j):
         else :
             final_labels.append(-1)
     return final_labels
+
+
+def count_labels(labels):
+    count_1 = labels.count(1)
+    count_0 = labels.count(0)
+    count_neg1 = labels.count(-1)
+    return {"1": count_1, "0": count_0, "-1": count_neg1}
+
+
+#coin_prices_60d, marketcap_60j, volume_24h = fetch_data_from_excel()
+# # Utilisation de la fonction
+# final_labels = labelled_average(coin_prices_60d, marketcap_60j, volume_24h)
+# print(count_labels(final_labels))

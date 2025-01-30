@@ -1,6 +1,8 @@
 import data.calculated_data.rsi as rs
 import data.calculated_data.moving_average as ma
 import data.calculated_data.variation_price as vp
+from data.recover_data.coin_from_dbeaver import *
+from data.recover_data.coin_from_excel import *
 import pandas as pd
 from joblib import load
 
@@ -20,7 +22,7 @@ def predict_model(coin_prices_365j, marketcap_365j, volume_24h_365j):
     df = pd.DataFrame({
         'Price': coin_prices_365j,
         'Market Cap': marketcap_365j,
-        'Volume': coin_prices_365j,
+        'Volume': volume_24h_365j,
         'RSI': rsi,
         'SMA50': sma50,
         'SMA200': sma200,
@@ -31,7 +33,12 @@ def predict_model(coin_prices_365j, marketcap_365j, volume_24h_365j):
         'VP_30d': vp_30d
     })
 
-    model = load('eth_decision_tree_model.joblib')
+    model = load("C:\\Users\\arthu\\PycharmProjects\\Surchauffe_tools\\model\\solana_decision_tree_model.joblib")
     prediction = model.predict(df)
     return prediction
+
+
+# coin_prices_60d, marketcap_60j, volume_24h = fetch_60d_from_excel()
+# prediction = predict_model(coin_prices_60d, marketcap_60j, volume_24h)
+# print(prediction)
 

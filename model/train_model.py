@@ -1,4 +1,5 @@
-import data.recover_data.coin_from_excel as excel
+from data.recover_data.coin_from_dbeaver import *
+from data.recover_data.coin_from_excel import *
 import data.labeled_data.clean_labeled_data as clean
 import data.calculated_data.rsi as rs
 import data.calculated_data.moving_average as ma
@@ -23,7 +24,7 @@ def train_model(coin_prices_365j, marketcap_365j, volume_24h_365j):
     df = pd.DataFrame({
         'Price': coin_prices_365j,
         'Market Cap': marketcap_365j,
-        'Volume': coin_prices_365j,
+        'Volume': volume_24h_365j,
         'RSI': rsi,
         'SMA50': sma50,
         'SMA200': sma200,
@@ -41,14 +42,15 @@ def train_model(coin_prices_365j, marketcap_365j, volume_24h_365j):
     X_train, x_test, Y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     decision_tree = DecisionTreeClassifier()
     decision_tree.fit(X_train, Y_train)
-    dump(decision_tree, 'eth_decision_tree_model.joblib')
-    print("Modèle sauvegardé sous le nom : 'eth_decision_tree_model.joblib'")
+    dump(decision_tree, 'solana_decision_tree_model.joblib')
+    print("Modèle sauvegardé sous le nom : 'solana_decision_tree_model.joblib'")
     test_tree = decision_tree.score(x_test, y_test)
     return test_tree
 
-# eth_price, marketcap, volume = excel.fetch_eth_data_from_excel()
-# test_tree = train_model(eth_price, marketcap, volume)
-# print(test_tree)
+df, eth_price, marketcap, volume = fetch_data_from_excel()
+test_tree = train_model(eth_price, marketcap, volume)
+print(test_tree)
+
 
 
 
