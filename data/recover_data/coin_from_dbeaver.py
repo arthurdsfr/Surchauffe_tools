@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 import pandas as pd
 import pymysql
 
-def fetch_data_from_excel():
+def fetch_data_from_dbeaver():
 
     engine = create_engine('mysql+pymysql://root:azerty@localhost/crypto_data')
 
@@ -35,7 +35,7 @@ def fetch_data_from_excel():
         engine.dispose()
 
 
-def fetch_60d_from_excel():
+def fetch_60d_from_dbeaver():
 
     engine = create_engine('mysql+pymysql://root:azerty@localhost/crypto_data')
 
