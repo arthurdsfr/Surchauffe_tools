@@ -1,5 +1,5 @@
-def volume_trading_average(coin_volume_365j):
-    if len(coin_volume_365j) == 0:
+def volume_trading_average(coin_volume):
+    if len(coin_volume) == 0:
         return None
-    return sum(coin_volume_365j) / len(coin_volume_365j)
+    return sum(coin_volume) / len(coin_volume)
 

@@ -1,10 +1,10 @@
 import pandas as pd
-import data.recover_data.coingecko_api as cg
-import matplotlib.pyplot as plt
-def rsi(coin_prices_365j):
+
+
+def rsi(coin_prices):
     period = 14
-    df_coin_prices_365j = pd.DataFrame(coin_prices_365j, columns=['Close'])
-    price_delta_day = df_coin_prices_365j['Close'].diff()
+    df_coin_prices= pd.DataFrame(coin_prices, columns=['Close'])
+    price_delta_day = df_coin_prices['Close'].diff()
 
     gain = price_delta_day.where(price_delta_day > 0, 0)
     losses = abs(price_delta_day.where(price_delta_day < 0, 0))
