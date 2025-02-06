@@ -44,3 +44,5 @@ def plot_results(df, predictions):
     plt.xticks(rotation=45)
     plt.legend()
     plt.show()
+
+
