@@ -3,6 +3,8 @@ import data.calculated_data.moving_average as ma
 import data.calculated_data.variation_price as vp
 import pandas as pd
 from joblib import load
+from data.recover_data.coin_from_excel import *
+
 
 # Fonction pour faire des prédictions
 def predict_model(coin_prices, number_trades, volume_24h):
@@ -18,7 +20,7 @@ def predict_model(coin_prices, number_trades, volume_24h):
 
     # Créer le DataFrame avec les caractéristiques calculées
     df = pd.DataFrame({
-        'Price': coin_prices,
+        'Close': coin_prices,
         'Number of Trades': number_trades,
         'Volume': volume_24h,
         'RSI': rsi,
@@ -31,12 +33,7 @@ def predict_model(coin_prices, number_trades, volume_24h):
         'VP_30d': vp_30d
     })
 
-    model = load("C:\\Users\\arthu\\PycharmProjects\\Surchauffe_tools\\model\\solana_decision_tree_model.joblib")
-    prediction = model.predict(df)
-    return prediction
-
-
-# coin_prices_60d, marketcap_60j, volume_24h = fetch_60d_from_excel()
-# prediction = predict_model(coin_prices_60d, marketcap_60j, volume_24h)
-# print(prediction)
+    model = load("C:\\Users\\arthu\\PycharmProjects\\Surchauffe_tools\\model\\btc_decision_tree_model.joblib")
+    predictions = model.predict(df)
+    return predictions
 
