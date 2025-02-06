@@ -1,28 +1,28 @@
-import data.labeled_data.labeled_data_marketcap as mc
 import data.labeled_data.labeled_data_volume as vol
 import data.labeled_data.labeled_data_rsi as rs
 import data.labeled_data.labeled_variation_price as vp
 import data.labeled_data.labeled_data_ma as ma
+import data.labeled_data.labeled_data_trade as tr
 from data.recover_data.coin_from_dbeaver import *
 from data.recover_data.coin_from_excel import *
 
 
-def labelled_average(coin_price_365j, marketcap_365j, volume_24h_365j):
+def labelled_average(coin_prices, number_trade, volumes_24h):
     number_variables = 10
-    mc_labelled = mc.labeled_marketcap(marketcap_365j)
-    vt_labelled = vol.labeled_volume(volume_24h_365j, coin_price_365j)
-    rsi_labelled = rs.labeled_rsi(coin_price_365j)
-    vp1d_labelled = vp.labeled_variation_price_1d(coin_price_365j)
-    vp7d_labelled = vp.labeled_variation_price_7d(coin_price_365j)
-    vp30d_labelled = vp.labeled_variation_price_30d(coin_price_365j)
-    sma50_labelled = ma.labeled_price_coin_sma50(coin_price_365j)
-    sma200_labelled = ma.labeled_price_coin_sma200(coin_price_365j)
-    ema50_labelled = ma.labeled_price_coin_ema50(coin_price_365j)
-    ema200_labelled = ma.labeled_price_coin_ema200(coin_price_365j)
+    tr_labelled = tr.labeled_trade(number_trade, coin_prices)
+    vt_labelled = vol.labeled_volume(volumes_24h, coin_prices)
+    rsi_labelled = rs.labeled_rsi(coin_prices)
+    vp1d_labelled = vp.labeled_variation_price_1d(coin_prices)
+    vp7d_labelled = vp.labeled_variation_price_7d(coin_prices)
+    vp30d_labelled = vp.labeled_variation_price_30d(coin_prices)
+    sma50_labelled = ma.labeled_price_coin_sma50(coin_prices)
+    sma200_labelled = ma.labeled_price_coin_sma200(coin_prices)
+    ema50_labelled = ma.labeled_price_coin_ema50(coin_prices)
+    ema200_labelled = ma.labeled_price_coin_ema200(coin_prices)
 
     final_labels = []
-    for i in range(len(coin_price_365j)):
-        sum_labels = mc_labelled[i] + vt_labelled[i] + rsi_labelled[i] + vp1d_labelled[i] + vp7d_labelled[i] + vp30d_labelled[i] + sma50_labelled[i] + sma200_labelled[i] + ema50_labelled[i] + ema200_labelled[i]
+    for i in range(len(coin_prices)):
+        sum_labels = tr_labelled[i] + vt_labelled[i] + rsi_labelled[i] + vp1d_labelled[i] + vp7d_labelled[i] + vp30d_labelled[i] + sma50_labelled[i] + sma200_labelled[i] + ema50_labelled[i] + ema200_labelled[i]
         avg_labels = sum_labels / number_variables
         if avg_labels > 0.5:
             final_labels.append(1)

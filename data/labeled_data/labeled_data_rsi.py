@@ -1,10 +1,10 @@
 import data.calculated_data.rsi as rs
 
-def labeled_rsi(coin_prices_365j):
+def labeled_rsi(coin_prices):
     criteria_1 = 30
     criteria_2 = 70
     labels = []
-    rsi = rs.rsi(coin_prices_365j)
+    rsi = rs.rsi(coin_prices)
     for rsi_1d in rsi:
         if rsi_1d >= criteria_2:
             labels.append(1)
