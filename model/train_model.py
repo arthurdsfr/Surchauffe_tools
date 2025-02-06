@@ -8,21 +8,21 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from joblib import dump
 
-def train_model(coin_prices_365j, marketcap_365j, volume_24h_365j):
-    rsi = rs.rsi(coin_prices_365j)
-    sma50 = ma.sma_50(coin_prices_365j)
-    sma200 = ma.sma_200(coin_prices_365j)
-    ema50 = ma.ema_50(coin_prices_365j)
-    ema200 = ma.ema_200(coin_prices_365j)
-    vp_1d = vp.price_variation_1d(coin_prices_365j)
-    vp_7d = vp.price_variation_7d(coin_prices_365j)
-    vp_30d = vp.price_variation_30d(coin_prices_365j)
-    labels = clean.labelled_average(coin_prices_365j, marketcap_365j, volume_24h_365j)
+def train_model(coin_prices, number_trades, volume_24h):
+    rsi = rs.rsi(coin_prices)
+    sma50 = ma.sma_50(coin_prices)
+    sma200 = ma.sma_200(coin_prices)
+    ema50 = ma.ema_50(coin_prices)
+    ema200 = ma.ema_200(coin_prices)
+    vp_1d = vp.price_variation_1d(coin_prices)
+    vp_7d = vp.price_variation_7d(coin_prices)
+    vp_30d = vp.price_variation_30d(coin_prices)
+    labels = clean.labelled_average(coin_prices, number_trades, volume_24h)
 
     df = pd.DataFrame({
-        'Price': coin_prices_365j,
-        'Market Cap': marketcap_365j,
-        'Volume': volume_24h_365j,
+        'Price': coin_prices,
+        'Number of Trades': number_trades,
+        'Volume': volume_24h,
         'RSI': rsi,
         'SMA50': sma50,
         'SMA200': sma200,
@@ -45,9 +45,9 @@ def train_model(coin_prices_365j, marketcap_365j, volume_24h_365j):
     test_tree = decision_tree.score(x_test, y_test)
     return test_tree
 
-df, eth_price, marketcap, volume = fetch_data_from_excel()
-test_tree = train_model(eth_price, marketcap, volume)
-print(test_tree)
+# df, coin_prices, number_trades, volume_24h = fetch_data_from_excel()
+# test_tree = train_model(coin_prices, number_trades, volume_24h)
+# print(test_tree)
 
 
 
