@@ -1,4 +1,3 @@
-from data.recover_data.coin_from_dbeaver import *
 from data.recover_data.coin_from_excel import *
 from vizualisation.plot_indicators import *
 from model.predict_model import predict_model

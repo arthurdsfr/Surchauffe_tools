@@ -1,8 +1,6 @@
 import data.calculated_data.rsi as rs
 import data.calculated_data.moving_average as ma
 import data.calculated_data.variation_price as vp
-from data.recover_data.coin_from_dbeaver import *
-from data.recover_data.coin_from_excel import *
 import pandas as pd
 from joblib import load
 

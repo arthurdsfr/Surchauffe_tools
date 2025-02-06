@@ -3,8 +3,6 @@ import data.labeled_data.labeled_data_rsi as rs
 import data.labeled_data.labeled_variation_price as vp
 import data.labeled_data.labeled_data_ma as ma
 import data.labeled_data.labeled_data_trade as tr
-from data.recover_data.coin_from_dbeaver import *
-from data.recover_data.coin_from_excel import *
 
 
 def labelled_average(coin_prices, number_trade, volumes_24h):

@@ -1,4 +1,3 @@
-from data.recover_data.coin_from_dbeaver import *
 from data.recover_data.coin_from_excel import *
 import data.labeled_data.clean_labeled_data as clean
 import data.calculated_data.rsi as rs
@@ -7,7 +6,6 @@ import data.calculated_data.variation_price as vp
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn import tree
 from joblib import dump
 
 def train_model(coin_prices_365j, marketcap_365j, volume_24h_365j):
