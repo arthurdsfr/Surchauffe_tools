@@ -6,6 +6,7 @@ import data.calculated_data.variation_price as vp
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from joblib import dump
 
 def train_model(coin_prices, number_trades, volume_24h):
@@ -38,16 +39,27 @@ def train_model(coin_prices, number_trades, volume_24h):
     y = df['Labels']
 
     X_train, x_test, Y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    decision_tree = DecisionTreeClassifier()
-    decision_tree.fit(X_train, Y_train)
-    dump(decision_tree, 'btc_decision_tree_model.joblib')
-    print("Modèle sauvegardé sous le nom : 'btc_decision_tree_model.joblib'")
-    test_tree = decision_tree.score(x_test, y_test)
-    return test_tree
 
-# df, coin_prices, number_trades, volume_24h = fetch_data_from_excel()
-# test_tree = train_model(coin_prices, number_trades, volume_24h)
-# print(test_tree)
+    #Utilization of a Decision Tree
+    #decision_tree = DecisionTreeClassifier()
+    #decision_tree.fit(X_train, Y_train)
+    #dump(decision_tree, 'jup_decision_tree_model.joblib')
+    #test_score = decision_tree.score(x_test, y_test)
+
+    # Utilization of a Random Forest
+    print("Modèle sauvegardé sous le nom : 'jup_decision_tree_model.joblib'")
+    random_forest = RandomForestClassifier(n_estimators=100, random_state=42)
+    random_forest.fit(X_train, Y_train)
+
+    dump(random_forest, 'eth_random_forest_model.joblib')
+    print("Modèle sauvegardé sous le nom : 'eth_random_forest_model.joblib'")
+
+    test_score = random_forest.score(x_test, y_test)
+    return test_score
+
+df, coin_prices, number_trades, volume_24h = fetch_data_from_excel()
+test_score = train_model(coin_prices, number_trades, volume_24h)
+print(f"La précision du modèle est de : {test_score}")
 
 
 

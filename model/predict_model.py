@@ -1,7 +1,6 @@
 import data.calculated_data.rsi as rs
 import data.calculated_data.moving_average as ma
 import data.calculated_data.variation_price as vp
-import pandas as pd
 from joblib import load
 from data.recover_data.coin_from_excel import *
 
@@ -33,7 +32,7 @@ def predict_model(coin_prices, number_trades, volume_24h):
         'VP_30d': vp_30d
     })
 
-    model = load("C:\\Users\\arthu\\PycharmProjects\\Surchauffe_tools\\model\\btc_decision_tree_model.joblib")
+    model = load("C:\\Users\\arthu\\PycharmProjects\\Surchauffe_tools\\model\\jup_decision_tree_model.joblib")
     predictions = model.predict(df)
     return predictions
 
