@@ -10,7 +10,7 @@ from data.recover_data.coin_from_excel import *
 def labelled_average(coin_price_365j, marketcap_365j, volume_24h_365j):
     number_variables = 10
     mc_labelled = mc.labeled_marketcap(marketcap_365j)
-    vt_labelled = vol.labeled_volume(volume_24h_365j)
+    vt_labelled = vol.labeled_volume(volume_24h_365j, coin_price_365j)
     rsi_labelled = rs.labeled_rsi(coin_price_365j)
     vp1d_labelled = vp.labeled_variation_price_1d(coin_price_365j)
     vp7d_labelled = vp.labeled_variation_price_7d(coin_price_365j)
