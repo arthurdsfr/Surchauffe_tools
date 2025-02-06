@@ -1,5 +1,4 @@
 
-
 def price_variation_1d(coin_prices):
     price_variation_1d = [0]
     for day in range(1, len(coin_prices)):

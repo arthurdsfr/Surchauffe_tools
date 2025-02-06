@@ -20,7 +20,7 @@ def train_model(coin_prices, number_trades, volume_24h):
     labels = clean.labelled_average(coin_prices, number_trades, volume_24h)
 
     df = pd.DataFrame({
-        'Price': coin_prices,
+        'Close': coin_prices,
         'Number of Trades': number_trades,
         'Volume': volume_24h,
         'RSI': rsi,
@@ -40,8 +40,8 @@ def train_model(coin_prices, number_trades, volume_24h):
     X_train, x_test, Y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     decision_tree = DecisionTreeClassifier()
     decision_tree.fit(X_train, Y_train)
-    dump(decision_tree, 'solana_decision_tree_model.joblib')
-    print("Modèle sauvegardé sous le nom : 'solana_decision_tree_model.joblib'")
+    dump(decision_tree, 'btc_decision_tree_model.joblib')
+    print("Modèle sauvegardé sous le nom : 'btc_decision_tree_model.joblib'")
     test_tree = decision_tree.score(x_test, y_test)
     return test_tree
 
