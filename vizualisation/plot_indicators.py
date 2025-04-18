@@ -34,15 +34,25 @@ def plot_indicators(df, coin_prices):
     plt.tight_layout()
     plt.show()
 
-def plot_results(df, predictions):
+def plot_results(df, predictions, coin_prices):
     dates = np.arange(len(df))  # Création d'un axe temporel fictif
-    plt.figure(figsize=(12, 5))
-    plt.plot(dates, predictions, label="Prédictions", marker='o', color='green')
-    plt.title("Prédictions du Modèle")
-    plt.xlabel("Dates")
-    plt.ylabel("Label Prédit")
-    plt.xticks(rotation=45)
-    plt.legend()
-    plt.show()
 
+    fig, axs = plt.subplots(2, 1, figsize=(12, 10), sharex=True)  # Création de deux sous-graphes (subplot)
+
+    # Tracer le prix du Bitcoin
+    axs[0].plot(dates, coin_prices, label="Prix du Bitcoin", color='black')
+    axs[0].set_title("Prix du Bitcoin")
+    axs[0].set_ylabel("Prix")
+    axs[0].legend()
+
+    # Tracer les prédictions du modèle
+    axs[1].plot(dates, predictions, label="Prédictions", marker='o', color='green')
+    axs[1].set_title("Prédictions du Modèle")
+    axs[1].set_xlabel("Dates")
+    axs[1].set_ylabel("Label Prédit")
+    axs[1].legend()
+
+    plt.xticks(rotation=45)
+    plt.tight_layout()  # Optimisation de l'espacement des sous-graphes
+    plt.show()
 

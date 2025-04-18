@@ -4,7 +4,7 @@ import pandas as pd
 def fetch_data_from_excel():
     try:
         # Définir le chemin du fichier Excel
-        file_path = "C:\\Users\\arthu\\PycharmProjects\\Surchauffe_Tools\\data\\recover_data\\BTCUSDT.xlsx"  # À modifier avec le bon chemin
+        file_path = "C:\\Users\\arthu\\PycharmProjects\\Projet_ML_IA\\data\\recover_data\\BTCUSDT.xlsx"  # À modifier avec le bon chemin
 
         # Lire les données depuis l'Excel
         df = pd.read_excel(file_path, sheet_name=0)
@@ -31,7 +31,7 @@ def fetch_data_from_excel():
 def fetch_60d_from_excel():
     try:
         # Définir le chemin du fichier Excel
-        file_path = "C:\\Users\\arthu\\PycharmProjects\\Surchauffe_Tools\\data\\recover_data\\BTCUSDT.xlsx"  # À modifier avec le bon chemin
+        file_path = "C:\\Users\\arthu\\PycharmProjects\\Surchauffe_Tools\\data\\recover_data\\BTC_test.xlsx"  # À modifier avec le bon chemin
 
         # Lire les données depuis l'Excel
         df = pd.read_excel(file_path, sheet_name=0)
@@ -54,4 +54,3 @@ def fetch_60d_from_excel():
     except Exception as e:
         print("Une erreur s'est produite :", e)
         return [], [], []
-

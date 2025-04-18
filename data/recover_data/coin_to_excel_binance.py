@@ -4,9 +4,9 @@ import pandas as pd
 def get_historical_data():
     url = "https://api.binance.com/api/v3/klines"
     params = {
-        'symbol': "ETHUSDT",
+        'symbol': "BTCUSDT",
         'interval': "1d",
-        'limit': 1000  # Max 1000 bougies par requête
+        'limit': 60  # Max 1000 bougies par requête
     }
     response = requests.get(url, params=params)
 
@@ -23,7 +23,7 @@ def get_historical_data():
         print("Erreur API Binance")
         return None
 
-# df_data = get_historical_data()
-# df_data.to_excel("ETHUSDT.xlsx")
+df_data = get_historical_data()
+df_data.to_excel("BTC_test.xlsx")
 
 

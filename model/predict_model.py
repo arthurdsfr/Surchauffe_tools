@@ -32,7 +32,7 @@ def predict_model(coin_prices, number_trades, volume_24h):
         'VP_30d': vp_30d
     })
 
-    model = load("C:\\Users\\arthu\\PycharmProjects\\Surchauffe_tools\\model\\jup_decision_tree_model.joblib")
+    model = load("C:\\Users\\arthu\\PycharmProjects\\Projet_ML_IA\\model\\btc_random_forest_model.joblib")
     predictions = model.predict(df)
     return predictions
 
